@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="col-sm-4">
+        <h2>Categories</h2>
+            {% for category in catalog %}
+            <h3>
+                <a href="{{url_for('showCategory', category_id = category.id)}}"> <p>{{category.name}}</p></a>
+            </h3>
+             {% endfor %}
+    </div>
+    <div class="col-sm-5">
+        <h2>{{category.name}}</h2>
+        {% for i in items %}
+            <h3>
+                <a href="{{url_for('showCategoryItem', item_id = i.id, category_id=category.id)}}"><p>{{i.itemName}}</p></a>
+            </h3>
+        {% endfor %}
+    </div>
+    {% if isLoggedIn %}
+        <div class="col-sm-2 itemBtn">
+            <a href="{{url_for('addItem', catalog=catalog)}}" style="color: #E74B37">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>New Item</a>
+        </div>
+    {% endif %}
+{% endblock %}

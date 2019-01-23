@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>UDACITY Item Catalog</title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+	<link rel="stylesheet" href="https://github.com/lipis/bootstrap-social/blob/gh-pages/bootstrap-social.css">
+	<link rel="stylesheet" href="https://github.com/lipis/bootstrap-social/blob/gh-pages/bootstrap-social.less">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel= stylesheet type= text/css href="{{url_for('static', filename='styles.css')}}">
+</head>
+<body>
+	<div class="container">
+			<div class="header">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-7 header__title title__text">
+							<a href="{{url_for('getCatalog')}}" style="color:white;">Catalog Manager</a>
+						</div>
+						<div class="col-md-2 text-right" style="margin-top: 10px;">
+							{% if 'username' not in session %}
+							<a class="loginBtn loginBtn--google" href="{{url_for('login')}}">Login</a>
+							{% else %}
+							<a class="loginBtn loginBtn--google" href="{{url_for('gdisconnect')}}">Logout</a>
+							{% endif %}
+						</div>
+					</div>
+			</div>
+			<!-- <div class="content"> -->
+				{% block content %}
+				{% endblock %}
+			<!-- </div> -->
+	</div>
+</body>
+</html>

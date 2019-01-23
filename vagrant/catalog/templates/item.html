@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="well well-lg">
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{item.itemName}}</div>
+        <div class="panel-body">
+            <div class="col-sm-12">
+                {{item.description}}
+            </div>
+            {% if isLoggedIn %}
+                <div class="col-sm-12 itemBtn">
+                    <a href="{{url_for('editItem', item_id = item.id, item=item)}}" style="color: #E74B37">Edit</a>
+                    <span>|</span>
+                    <a href="{{url_for('deleteItem', item_id = item.id, item=item)}}" style="color: #E74B37">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
