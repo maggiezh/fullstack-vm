@@ -1,4 +1,4 @@
-from database_setup import Base, User, Category, Item
+from db_setup import Base, User, Category, Item
 from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy import create_engine
 from sqlalchemy.orm.exc import NoResultFound
@@ -31,7 +31,7 @@ CLIENT_ID = json.loads(
 APPLICATION_NAME = "Catalog Manager"
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:///catalogMngr.db')
+engine = create_engine('postgresql://catalog:catalog@localhost/catalogMngr')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
